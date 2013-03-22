@@ -1,0 +1,28 @@
+<p>
+  <b>Id:</b>
+  <%=h @nota.id %>
+</p>
+
+<p>
+  <b>Aluno turma:</b>
+  <%=h @nota.aluno_turma_id %>
+</p>
+
+<p>
+  <b>Periodo:</b>
+  <%=h @nota.periodo %>
+</p>
+
+<p>
+  <b>Seqnota:</b>
+  <%=h @nota.seqnota %>
+</p>
+
+<p>
+  <b>Nota:</b>
+  <%=h @nota.nota %>
+</p>
+
+
+<%= link_to 'Edit', edit_nota_path(@nota) %> |
+<%= link_to 'Back', notas_path %>

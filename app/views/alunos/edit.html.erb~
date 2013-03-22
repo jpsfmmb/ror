@@ -1,0 +1,36 @@
+<h1>Editing aluno</h1>
+
+<% form_for(@aluno) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </p>
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :dtnascimento %><br />
+    <%= f.date_select :dtnascimento %>
+  </p>
+  <p>
+    <%= f.label :serie %><br />
+    <%= f.text_field :serie %>
+  </p>
+  <p>
+    <%= f.label :dtmatricula %><br />
+    <%= f.date_select :dtmatricula %>
+  </p>
+  <p>
+    <%= f.label :mae %><br />
+    <%= f.text_field :mae %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @aluno %> |
+<%= link_to 'Back', alunos_path %>

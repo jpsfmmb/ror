@@ -1,0 +1,23 @@
+<h1><b><label>Turmas frequentadas por:</label><%=h  @aluno_nome %></b></h1>
+
+<table  border="1" width="80%">
+  <tr>
+    <th align="center" width="30%">Turma</th>
+    <th align="center" width="20%">Disciplina</th>
+    <th align="center" width="20%">Professor</th>
+    <th align="center" width="5%">Notas </th>
+    <th align="center" width="5%">Deletar</th>
+  </tr>
+
+<% @turmas.each do |t| %>
+  <tr>
+    <td align="left" width="30%"><%=h t.turma.nome %></td>
+    <td align="left" width="20%"><%=h t.disciplina_professore.disciplina.nome %></td>
+    <td align="left" width="20%"><%=h t.disciplina_professore.professore.nome %></td>
+    <td align="center" width="5%"><%= link_to 'Notas',:controller => 'notas',:action =>'list', :aluno_turma_id =>t.id %></td>
+    <td align="center" width="5%"><%= link_to 'Excluir',{:controller => 'aluno_turmas', :action => 'destroy',:id=>t.id}, :confirm => 'Tem certeza de que deseja DELETAR este aluno desta Turma ?'%></td>
+  </tr>
+<% end %>
+</table>
+<br/>
+<!--%#= link_to 'Nova Disciplina para o aluno',:action =>'new' %-->

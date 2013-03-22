@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  nome: MyString
+  dtnascimento: 2013-03-07
+  serie: MyString
+  dtmatricula: 2013-03-07
+  mae: MyString
+
+two:
+  id: 1
+  nome: MyString
+  dtnascimento: 2013-03-07
+  serie: MyString
+  dtmatricula: 2013-03-07
+  mae: MyString

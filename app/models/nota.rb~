@@ -1,0 +1,5 @@
+class Nota < ActiveRecord::Base
+
+   belongs_to :aluno_turma
+
+end

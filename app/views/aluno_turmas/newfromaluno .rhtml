@@ -1,0 +1,11 @@
+<h1>Novo aluno para a Turma</h1>
+
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'formfromaluno' %>
+
+ <font color='blue'><h3> <%= @empty if @empty!= nil %></h3></font>
+
+  <%= submit_tag "Gravar" %>
+
+<% end %>
+

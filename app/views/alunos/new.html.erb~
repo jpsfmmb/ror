@@ -1,0 +1,10 @@
+<h1>Novo aluno</h1>
+
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'form' %>
+<% end %>
+
+<%= link_to 'Voltar', :action => 'list' %>
+
+
+

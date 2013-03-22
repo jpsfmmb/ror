@@ -1,0 +1,105 @@
+class NotasController < ApplicationController
+
+  def index
+    list
+    render :action => 'list',:aluno_turma_id => params[:aluno_turma_id] # 
+  end
+
+  def list # Recebe o Id do aluno e da Turma e devolve a lista de Notas.(params[:Aluno_Turma_id])
+    @notas = Nota.paginate :page => params[:page], :per_page => 50,:order => "periodo,seqnota",  :include=> [:aluno_turma], :conditions => ["aluno_turma_id = ? ",params[:aluno_turma_id]]
+    aluno_turma = AlunoTurma.find(params[:aluno_turma_id])
+    @aluno=aluno_turma.aluno
+    @turma=aluno_turma.turma
+    @disciplina = aluno_turma.disciplina_professore.disciplina
+    @aluno_turma_id=params[:aluno_turma_id]
+  end
+
+  def show
+
+    @nota = Nota.find(params[:id])
+
+  end
+
+  def new
+
+    aluno_turma  = AlunoTurma.find(params[:aluno_turma_id])
+
+    @aluno_nome = aluno_turma.aluno.nome # aluno
+
+    @turma_nome = aluno_turma.turma.nome # turma
+
+    @disciplina_nome = aluno_turma.disciplina_professore.disciplina.nome # disciplina
+
+    @nota = Nota.new
+    @nota.periodo =0
+    @nota.seqnota = 0
+    @nota.nota =0.0
+
+    @aluno_turma_id = params[:aluno_turma_id]
+
+  end
+
+  def edit
+    @nota = Nota.find(params[:id])
+  end
+
+  def create
+    # 
+    #
+    bdeuerro = false
+    mens     = ''
+    #
+    aluno_turma = AlunoTurma.find(params[:aluno_turma_id])
+ 
+    nota = Nota.new
+
+    nota.aluno_turma_id = aluno_turma.id # aluno_turma_ID
+    nota.periodo = params[:notas][:periodo]
+    nota.seqnota = params[:notas][:seqnota]
+    nota.nota    = params[:notas][:nota]
+    begin
+      nota.save!
+    rescue Exception => exc
+      bdeuerro = true
+      mens << exc
+    end
+#
+    if not bdeuerro then
+       flash[:notice] = 'Notas Gravadas com sucesso!'
+       redirect_to :action => 'list', :aluno_turma_id  => params[:aluno_turma_id]
+    else
+       flash[:notice] = "Erro ao tentar gravar registro. Erro: #{mens}"
+       redirect_to :action => 'new', :aluno_turma_id => params[:aluno_turma_id]
+    end
+
+  end
+
+  def update
+    @nota = Nota.find(params[:id])
+
+  end
+
+  def destroy
+    begin
+ 
+      @nota = Nota.find(params[:id])
+
+      aluno_turma_id = @nota.aluno_turma_id
+
+      @nota.destroy
+
+      redirect_to :action => 'list', :aluno_turma_id => aluno_turma_id # renderiza a lista de alunos da turma atualizada.
+
+    rescue Exception => e
+
+      # aqui Implementar rotina para personalizar a mensagem vinda do BD
+
+      flash[:notice] = "Erro: #{e.message}"
+
+      redirect_to :back
+
+    end
+
+  end
+
+end

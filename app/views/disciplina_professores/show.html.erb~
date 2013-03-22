@@ -1,0 +1,18 @@
+<p>
+  <b>Id:</b>
+  <%=h @disciplina_professore.id %>
+</p>
+
+<p>
+  <b>Disciplina:</b>
+  <%=h @disciplina_professore.disciplina_id %>
+</p>
+
+<p>
+  <b>Professor:</b>
+  <%=h @disciplina_professore.professor_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_disciplina_professore_path(@disciplina_professore) %> |
+<%= link_to 'Back', disciplina_professores_path %>

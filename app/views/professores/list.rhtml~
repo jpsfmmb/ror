@@ -1,0 +1,31 @@
+<h1>Lista de Professores</h1>
+<table  border="1" width="80%">
+  <tr>
+    <th align="center">Id</th>
+    <th align="left">Nome</th>
+    <th align="center">CPF</th>
+    <th align="lefter">Titulo</th>
+    <th align="center">Dt Admissao</th>
+    <th align="center">Disciplinas</th>
+    <th align="center">Turmas</th>
+    <th align="left">Alterar</th>
+    <th align="left">Deletar</th>
+  </tr>
+
+<% @professores.each do |professor| %>
+  <tr>
+    <td align="center"><%=h professor.id %></td>
+    <td align="left"><%=h professor.nome %></td>
+    <td align="center"><%=h professor.cpf %></td>
+    <td align="lefter"><%=h professor.titulo %></td>
+    <td align="center"><%=h to_eurodate(professor.dtadmissao).to_s %></td>
+    <td align="center"><%= link_to 'Disciplinas',:controller =>'disciplina_professores',:action =>'list_profdisciplinas', :id =>  professor %></td>
+    <td align="center"><%= link_to 'Turmas',:action =>'edit', :id =>  professor %></td>
+
+    <td align="center"><%= link_to 'Alterar',:action =>'edit', :id =>  professor %></td>
+    <td align="center"><%= link_to 'Excluir',{:action => 'destroy',:id=>professor}, :confirm => 'Tem certeza de que deseja DELETAR este Professor ?'%></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'Novo professor',:action =>'new' %>

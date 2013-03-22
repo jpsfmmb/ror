@@ -1,0 +1,68 @@
+class DisciplinaTurmasController < ApplicationController
+
+  def index
+    list
+    render :action => 'list',:id => 1 # Defaults 
+  end
+
+  def list # Recebe o Id da Turma e devolve a lista de Disciplinas da mesma.
+    @turma  = Turma.find(params[:id])
+
+    @disciplina_turmas = DisciplinaTurma.paginate :page => params[:page], :per_page => 50,:order => "turma_id",  :include=> [:disciplina,:professore,:turma], :conditions => ["turma_id in (select turma_id from disciplina_turmas where turma_id = ? ) and turma_id = ? ",params[:id],params[:id]]
+  end
+
+  def new
+
+    @disciplinas = DisciplinaTurma.paginate :page => params[:page], :per_page => 50,:order => "turma_id",:include=> [:disciplina,:professores],:select => ["id,disciplina.id"], :conditions => ["disciplina.id not in (select disciplina_id from disciplina_turmas where turma_id = ? )",params[:id]]
+
+    @turma  = Turma.find(params[:id])
+    
+    @disciplina_turma = DisciplinaTurma.new
+
+    @empty= "Todas as 'Disciplinas' <br/> já estão habilitadas para a Turma: #{@turma.nome}<br/>" if @disciplinas== []
+
+  end
+
+  def edit
+    @disciplina_turma = DisciplinaTurma.find(params[:id])
+  end
+
+  def create
+    # receber as disciplinas selecionadas como um array no parametro [:disciplina_turma][:disciplina_professor_id]
+    #
+    bdeuerro = false
+    mens     = ''
+    #
+    params[:disciplina_turma][:disciplina_professor_id].each do |item|
+
+       disciplina_turma = DisciplinaTurma.new
+       disciplina_turma.turma_id = params[:turma_id]
+       disciplina_turma.disciplina_professor_id = item.to_i # disciplina_professor_id
+       begin
+         disciplina_turma.save!
+       rescue Exception => exc
+         bdeuerro = true
+         mens << exc
+       end
+
+    end # params
+    if not bdeuerro then
+       flash[:notice] = 'Disciplinas vinculados aa turma com sucesso!'
+       redirect_to :action => 'list', :id => params[:turma_id]
+    else
+       flash[:notice] = "Erro ao tentar gravar registro. Erro: #{mens}"
+       redirect_to :action => 'new', :id => params[:turma_id]
+    end
+  end
+
+  def update
+    @disciplina_turma = DisciplinaTurma.find(params[:id])
+  end
+
+  def destroy
+    turma_id = DisciplinaTurma.find(params[:id]).turma_id # turma_id 
+    @disciplina_turma = DisciplinaTurma.find(params[:id])
+    @disciplina_turma.destroy
+    redirect_to :action => 'list', :id => turma_id # renderiza a lista de disciplinas da turma, atualizada.
+  end
+end

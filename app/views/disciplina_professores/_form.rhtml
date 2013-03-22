@@ -1,0 +1,19 @@
+<%= error_messages_for 'disciplina_professore' %>
+<h1 style= "background-color: #99bbff; padding:3px;"><%=h 'Lista de Disciplinas' %></h1>
+<%= hidden_field_tag "professore_id",@professore.id%>
+<hr>
+  <table  border="1"  width="300">
+     <tr>
+      <td align="center" width ="10%"><i><b>Sel</b></i></td>
+     
+      <td align="center width ="90%"><i><b>Nome</b></i></td>
+     </tr>
+       <% @disciplinas.each do |d| %>
+        <tr>
+          <td align="center" width ="10%"> <%= check_box_tag "disciplina_professore[disciplina_id][]",d.id %></td>
+          <td align="center width ="90%"> <%=h d.nome%></td>
+          </tr>
+      <% end %>
+  </table>
+<br>
+

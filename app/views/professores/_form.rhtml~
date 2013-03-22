@@ -1,0 +1,24 @@
+
+<div id ="cabecalho">
+   <fieldset >
+       <legend><b><h1>Professor</h1> </b></legend>
+         <p>
+         <label for="professore_nome">Nome:</label>
+         <%= text_field 'professore', 'nome', {:size => 50} %>
+         </p>
+         <p>
+         <label for="professore_CPF">CPF:</label>
+         <%= text_field 'professore', "CPF" , {:size => 11}%>
+         </p>
+         <p>
+         <label for="professore_titul">titulo:</label>
+         <%= text_field 'professore', 'titulo' , {:size => 50}%>
+         </p>
+         <p>
+         <label for="professore_dtadmissao">DtAdmissao:</label>
+         <%= date_select 'professore', 'dtadmissao',:start_year=> 1950, :end_year => Time.now.year, :order => [ :day,:month,:year] %></p>
+         </p>
+   </fieldset>
+</div>
+<p> <%= submit_tag 'Gravar' %> </p>
+

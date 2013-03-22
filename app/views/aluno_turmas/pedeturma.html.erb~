@@ -1,0 +1,18 @@
+<% form_tag :action => 'new' do %>
+     <% if @turmas.class == 'Turma' then %>
+
+        <p><label>Turmas</label>
+        <%=  collection_select :aluno_turma, :turma_id, @turmas, :id, :nome, :prompt => "-- Selecione a Turma --" %>
+
+     <% else %>
+      <b>Turma:<%=h @turmas[0].nome%></b>
+        </br>
+        <%= hidden_field_tag "aluno_turma_turma_id",@turmas[0].id%>  
+
+     <%end%>
+   <label>Alunos</label>
+      <%=  collection_select :aluno_turma, :aluno_id, @alunos, :id, :nome, :prompt => "-- Selecione o Aluno --" %>
+  </p>
+  <%= submit_tag "Selecionar Disciplinas" %>
+<% end %>
+

@@ -1,0 +1,26 @@
+<h1><b><label>Aluno(a):</label><%=h  @aluno.nome %></b></h1>
+<h1><b><label>Turma:</label><%=h  @turma.nome %></b></h1>
+<h1><b><label>Disciplina:</label><%=h  @disciplina.nome %></b></h1>
+<%= hidden_field_tag "aluno_turma_id",@aluno_turma_id%>
+
+<table  border="1" width="50%">
+  <tr>
+    <th align="center" >Professor</th>
+    <th align="center" >Periodo</th>
+    <th align="center" >Seq</th>
+    <th align="center" >Nota</th>
+    <th align="center" >Deletar</th>
+  </tr>
+
+<% @notas.each do |n| %>
+  <tr>
+    <td width ="25%" align="left" ><%=h n.aluno_turma.disciplina_professore.professore.nome %></td>
+    <td width ="5%" align="center" ><%=h n.periodo %></td>
+    <td width ="5%" align="center" ><%=h n.seqnota %></td>
+    <td width ="5%" align="center" ><%=h n.nota %></td>
+    <td width ="10%" align="center" ><%= link_to 'Excluir',{:action => 'destroy',:id=>n.id}, :confirm => 'Tem certeza de que deseja DELETAR esta nota deste Aluno ?'%></td>
+  </tr>
+<% end %>
+</table>
+<br/>
+<%= link_to 'Nova Nota para o aluno',:action =>'new' ,:aluno_turma_id=> @aluno_turma_id%>

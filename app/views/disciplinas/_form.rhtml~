@@ -1,0 +1,16 @@
+
+<div id ="cabecalho">
+   <fieldset >
+       <legend><b><h1>Disciplina</h1> </b></legend>
+         <p>
+         <label for="disciplina_nome">Nome:</label>
+         <%= text_field 'disciplina', 'nome', {:size => 50} %>
+         </p>
+         <p>
+         <label for="disciplina_cargahoraria">Carga Horaria:</label>
+         <%= text_field 'disciplina', "cargahoraria" , {:size => 11}%>
+         </p>
+   </fieldset>
+</div>
+<p> <%= submit_tag 'Gravar' %> </p>
+

@@ -1,0 +1,30 @@
+
+<div id ="cabecalho">
+   <fieldset >
+       <legend><b><h1>Aluno</h1> </b></legend>
+         <p>
+         <label for="aluno_nome">Nome:</label>
+         <%= text_field 'aluno', 'nome', {:size => 50} %>
+         </p>
+         <p>
+         <label for="aluno_dtnascimento">DtNascimento:</label>
+         <%= date_select 'aluno', 'dtnascimento',:start_year=> 1910, :end_year => Time.now.year, :order => [ :day,:month,:year] %></p>
+         </p>
+         <p>
+   
+         <label for="aluno_serie">serie:</label>
+         <%= text_field 'aluno', 'serie' , {:size => 12}%>
+         </p>
+         <p>
+         <label for="aluno_dtmatricula">DtMatricula:</label>
+         <%= date_select 'aluno', 'dtmatricula', :start_year=> 2000, :end_year => Time.now.year, :order => [ :day, :month, :year] %></p>
+         </p>
+         <p>
+         <label for="aluno_mae">Nome da Mae:</label>
+         <%= text_field 'aluno', 'mae' , {:size => 50} %>
+         </p>
+         <p> <%= submit_tag 'Gravar' %> </p>
+
+    </fieldset>
+</div>
+

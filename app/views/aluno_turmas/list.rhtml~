@@ -1,0 +1,24 @@
+<h2>Alunos da Turma: <%=h @turma.nome %>  </h2>
+<table border = '1' width="50%">
+  <tr>
+    <th align ="center"><%= 'Id' %></th>
+    <th align ="left"><%= 'Nome' %></th>
+    <th align ="left"><%= 'Disciplina' %></th>
+    <th align ="left"><%= 'Professor' %></th>
+    <th align ="center"><%= 'Excluir' %></th>
+  </tr>
+<% @aluno_turmas.each do |at| %>
+  <tr>    
+    <td align ="center"><%=h at.aluno.id %></td>
+    <td align ="left"><%=h at.aluno.nome %></td>
+    <td align ="left"><%=h at.disciplina_professore.disciplina.nome %></td>
+    <td align ="left"><%=h at.disciplina_professore.professore.nome %></td>
+    <td align ="center"><%= link_to 'Excluir', { :action => 'destroy', :id => at.id}, :confirm => 'Confirma Exclusao deste Aluno da Turma ?',:method => :post %></td>
+  </tr>
+<% end %>
+</table>
+<br/>
+<h3>
+<%= link_to 'Adicionar novo Aluno a Turma', :action => 'pedeturma',:turma_id=>@turma.id%>
+</h3>
+

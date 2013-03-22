@@ -1,0 +1,10 @@
+<% form_tag :action => 'new' do %>
+        <p><label>Turmas</label>
+        <%=  collection_select :aluno_turma, :turma_id, @turmas, :id, :nome, :prompt => "-- Selecione a Turma --" %>
+       
+        <p><label>Alunos</label>
+           <%=  collection_select :aluno_turma, :aluno_id, @alunos, :id, :nome, :prompt => "-- Selecione o Aluno --" %>
+        </p>
+  <%= submit_tag "Selecionar Disciplinas" %>
+<% end %>
+

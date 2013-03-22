@@ -1,0 +1,7 @@
+<h1>Alterando Disciplina</h1>
+
+<% form_tag :action => 'update', :id => @disciplina do %>
+  <%= render :partial => 'form' %>
+<% end %>
+<%= link_to 'Voltar', :action => 'list' %>
+

@@ -1,0 +1,24 @@
+<h1>Editing disciplina_professore</h1>
+
+<% form_for(@disciplina_professore) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </p>
+  <p>
+    <%= f.label :disciplina_id %><br />
+    <%= f.text_field :disciplina_id %>
+  </p>
+  <p>
+    <%= f.label :professor_id %><br />
+    <%= f.text_field :professor_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @disciplina_professore %> |
+<%= link_to 'Back', disciplina_professores_path %>

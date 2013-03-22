@@ -1,0 +1,9 @@
+class DisciplinaTurma < ActiveRecord::Base
+  belongs_to :disciplina
+  belongs_to :turma
+  has_many   :disciplina_professores
+  belongs_to :professore, :through => :disciplina_professores
+
+
+
+end

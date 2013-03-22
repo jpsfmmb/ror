@@ -1,0 +1,28 @@
+<h1>Listing professores</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nome</th>
+    <th>Titulo</th>
+    <th>Dtadmissao</th>
+    <th>Cpf</th>
+  </tr>
+
+<% @professores.each do |professore| %>
+  <tr>
+    <td><%=h professore.id %></td>
+    <td><%=h professore.nome %></td>
+    <td><%=h professore.titulo %></td>
+    <td><%=h professore.dtadmissao %></td>
+    <td><%=h professore.cpf %></td>
+    <td><%= link_to 'Show', professore %></td>
+    <td><%= link_to 'Edit', edit_professore_path(professore) %></td>
+    <td><%= link_to 'Destroy', professore, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New professore', new_professore_path %>

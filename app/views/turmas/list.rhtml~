@@ -1,0 +1,22 @@
+<h1>Lista de Turmas</h1>
+<table  border="1" width="40%">
+  <tr>
+    <th align="center">Id</th>
+    <th align="left">Nome</th>
+    <th align="left">Codigo</th>
+    <th align="center">Alterar</th>
+    <th align="center">Deletar</th>
+  </tr>
+
+<% @turmas.each do |turma| %>
+  <tr>
+    <td align="center"><%=h turma.id %></td>
+    <td align="left"><%=h turma.nome %></td>
+    <td align="left"><%=h turma.codigo%></td>
+    <td align="center"><%= link_to 'Alterar',:action =>'edit', :id =>  turma %></td>
+    <td align="center"><%= link_to 'Excluir',{:action => 'destroy',:id=>turma}, :confirm => 'Tem certeza de que deseja DELETAR esta Turma ?'%></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'Nova turma',:action =>'new' %>

@@ -1,0 +1,24 @@
+<h1>Listing disciplina_professores</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Disciplina</th>
+    <th>Professor</th>
+  </tr>
+
+<% @disciplina_professores.each do |disciplina_professore| %>
+  <tr>
+    <td><%=h disciplina_professore.id %></td>
+    <td><%=h disciplina_professore.disciplina_id %></td>
+    <td><%=h disciplina_professore.professor_id %></td>
+    <td><%= link_to 'Show', disciplina_professore %></td>
+    <td><%= link_to 'Edit', edit_disciplina_professore_path(disciplina_professore) %></td>
+    <td><%= link_to 'Destroy', disciplina_professore, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New disciplina_professore', new_disciplina_professore_path %>

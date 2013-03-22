@@ -1,0 +1,16 @@
+
+<div id ="cabecalho">
+   <fieldset >
+       <legend><b><h1>Turma</h1> </b></legend>
+         <p>
+         <label for="turma_nome">Nome:</label>
+         <%= text_field 'turma', 'nome', {:size => 50} %>
+         </p>
+         <p>
+         <label for="turma_codigo">Codigo:</label>
+         <%= text_field 'turma', "codigo" , {:size => 10}%>
+         </p>
+   </fieldset>
+</div>
+<p> <%= submit_tag 'Gravar' %> </p>
+

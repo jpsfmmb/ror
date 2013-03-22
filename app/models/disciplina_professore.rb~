@@ -1,0 +1,6 @@
+class DisciplinaProfessore < ActiveRecord::Base
+
+  belongs_to :disciplina
+  belongs_to :professore
+
+end

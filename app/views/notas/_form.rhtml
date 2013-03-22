@@ -1,0 +1,24 @@
+<%= error_messages_for 'nota' %>
+
+<h1 style= "background-color: #99bbff; padding:3px;"><b><label>Aluno(a):</label><%=h  @aluno_nome %></b></h1>
+<h1 style= "background-color: #99bbff; padding:3px;"><b><label>Turma:</label><%=h  @turma_nome %></b></h1>
+<h1 style= "background-color: #99bbff; padding:3px;"><b><label>Turma:</label><%=h  @disciplina_nome %></b></h1>
+
+<%= hidden_field_tag "aluno_turma_id",@aluno_turma_id%>
+
+<hr>
+  <table  border="1"  width="500">
+     <tr>
+      <td align="center width ="5%"><i><b>Periodo</b></i></td>
+      <td align="center width ="5%"><i><b>Seq</b></i></td>
+      <td align="center width ="5%"><i><b>Nota</b></i></td>
+     </tr>
+        <tr>
+          <td align="center width ="5%"> <%= text_field 'notas', 'periodo',:size=>'5' %></td>
+          <td align="center width ="5%"> <%= text_field 'notas' ,'seqnota',:size=>'5' %></td>
+          <td align="center width ="5%"> <%= text_field 'notas', 'nota', :size=>'5' %></td>
+          </tr>
+  </table>
+<br>
+<p> <%= submit_tag 'Gravar' %> </p>
+

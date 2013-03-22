@@ -1,0 +1,59 @@
+<% form_tag :action => 'listafolha' do %>
+<table>
+  <td>
+    <fieldset>
+     <legend><b>Período da Folha</b></legend>
+       <b><i> De:</i></b> <%= select_date Date.today, :prefix => "dtinicio", :order => [:month, :day,  :year] %>
+       <b><i> Até:</i></b>  <%= select_date Date.today + 1, :prefix => "dtfim", :order => [:month,:day, :year] %></p>
+    </fieldset>	
+  </td>
+  <tr>
+   <td>
+    <div id="pax">
+     <fieldset>
+      <legend><b>Pax's</b></legend>
+       <b><i> Nome:</i></b>  <%= text_field_with_auto_complete "orderofservice",  "paxs", :size=> 40 %> 
+     </fieldset>
+    </div>
+   </td>
+  <tr>
+  <td>
+   <div id="Operadoras">
+     <fieldset>
+      <legend><b>Operadoras</b></legend>
+        <b><i> Operadora:</i></b>   <%= select 'orderofservice','operator_id',@operators,{:include_blank=> true}%>
+     </fieldset>
+   </div>
+   </td>
+  <tr>
+  <td>
+   <div id="servicos">
+     <fieldset>
+      <legend><b>Serviços</b></legend>
+        <b><i> Serviço:</i></b>   <%= select 'orderofservice_service','service_id',@services,{:include_blank=> true}%>
+     </fieldset>
+   </div>
+   </td>
+   <tr>
+   <td>
+   <div id="carros">
+     <fieldset>
+      <legend><b>Carros</b></legend>
+        <b><i> Carro:</i></b>   <%= select 'orderofservice_service','car_id',@cars,{:include_blank=> true}%>
+     </fieldset>
+   </div>
+   </td>
+      <tr>
+   <td>
+   <div id="motorista">
+     <fieldset>
+      <legend><b>Motoristas</b></legend>
+        <b><i> Motorista:</i></b>   <%= select 'orderofservice_service','driver_id',@drivers,{:include_blank=> true}%>
+     </fieldset>
+   </div>
+   </td>
+
+</table>
+  <%= submit_tag "Selecionar" %>
+<% end %>
+

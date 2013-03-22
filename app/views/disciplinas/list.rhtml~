@@ -1,0 +1,24 @@
+<h1>Lista de Disciplinas</h1>
+<table  border="1" width="40%">
+  <tr>
+    <th align="center">Id</th>
+    <th align="left">Nome</th>
+    <th align="right">Carga Horaria</th>
+    <th align="center">Alterar</th>
+    <th align="center">Deletar</th>
+  </tr>
+
+<% @disciplinas.each do |disciplina| %>
+  <tr>
+    <td align="center"><%=h disciplina.id %></td>
+    <td align="left"><%=h disciplina.nome %></td>
+    <td align="right"><%=h number_with_precision(disciplina.cargahoraria,2) %></td>
+    <td align="center"><%= link_to 'Alterar',:action =>'edit', :id =>  disciplina %></td>
+    <td align="center"><%= link_to 'Excluir',{:action => 'destroy',:id=>disciplina}, :confirm => 'Tem certeza de que deseja DELETAR esta Disciplina ?'%></td>
+  </tr>
+<% end %>
+</table>
+<!--%#= will_paginate @disciplinas%--> 
+<br/>
+<br />
+<%= link_to 'Nova disciplina',:action =>'new' %>

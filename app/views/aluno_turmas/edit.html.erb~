@@ -1,0 +1,28 @@
+<h1>Editing aluno_turma</h1>
+
+<% form_for(@aluno_turma) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </p>
+  <p>
+    <%= f.label :aluno_id %><br />
+    <%= f.text_field :aluno_id %>
+  </p>
+  <p>
+    <%= f.label :turma_id %><br />
+    <%= f.text_field :turma_id %>
+  </p>
+  <p>
+    <%= f.label :disciplina_professor_id %><br />
+    <%= f.text_field :disciplina_professor_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @aluno_turma %> |
+<%= link_to 'Back', aluno_turmas_path %>

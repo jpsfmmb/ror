@@ -1,0 +1,21 @@
+<h2>Disciplinas ministradas pelo(a) Professor(a): <%=h @professore.nome %>  </h2>
+<table border = '1'>
+  <tr>
+    <th align="center"><%= 'Id' %></th>
+    <th align="left"><%= 'Nome' %></th>
+    <th align="center"><%= 'Carga Horaria' %></th>
+    <th><%= 'Excluir' %></th>
+  </tr>
+<% @disciplina_professores.each do |dp| %>
+  <tr>    
+    <td align="center"><%=h dp.disciplina_id %></td>
+    <td align="left"><%=h dp.disciplina.nome %></td>
+    <td align="center"><%=h dp.disciplina.cargahoraria%></td>
+    <td><%= link_to 'Excluir', { :action => 'destroy', :id => dp.id}, :confirm => 'Confirma Exclusao desta Disciplina ?',:method => :post %></td>
+  </tr>
+<% end %>
+</table>
+<h3>
+<%= link_to 'Adicionar nova Disciplina a Lista ', :action => 'new', :id => @professore.id%>
+</h3>
+

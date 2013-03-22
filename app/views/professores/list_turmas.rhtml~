@@ -1,0 +1,22 @@
+<h1><b><label>Turmas do(a) Professor(a):</label><%=h  @professor.nome %></b></h1>
+
+<table  border="1" width="60%">
+  <tr>
+    <th align="center" width="25%">Turma</th>
+    <th align="center" width="30%">Disciplina</th>
+    <th align="center" width="5%">Deletar</th>
+  </tr>
+
+<% @turmas.each do |turma| %>
+
+<!-- turma[0]=turma_ID,turma[1]=nome da Turma,turma[2]=disciplina_id,turma[3]=nome da disciplina -->
+
+  <tr>
+    <td align="left" width="25%"><%=h turma[1] %></td><!--nome da turma-->
+    <td align="left" width="30%"><%=h turma[3] %></td><!--nome da disciplina-->
+    <td align="center" width="5%"><%= link_to 'Excluir',{:action => 'destroy_turma',:turma_id=>turma[0],:disciplina_id => turma[2],:professore_id => @professor.id}, :confirm => 'Tem certeza de que deseja DELETAR esta turma deste Professor ?'%></td>
+  </tr>
+<% end %>
+</table>
+<br/>
+
